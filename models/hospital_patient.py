@@ -36,6 +36,9 @@ class Patient(models.Model):
     note = fields.Text(string='Description', compute="_compute_description")
     responsible_name = fields.Char("Resp. Name", related="responsible_id.name")
 
+    color = fields.Integer()  # Color for Custom Widget
+    mail = fields.Char("Mail",)
+
     def get_default_user(self):
         return self.env.user
 

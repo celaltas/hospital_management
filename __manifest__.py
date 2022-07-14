@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'sale', 'website'],
+    'depends': ['base', 'mail', 'sale', 'website', 'web'],
 
     # always loaded
     'data': [
@@ -38,10 +38,19 @@
         'templates/create_page.xml',
         'templates/update_page.xml',
         'templates/homepage_override.xml',
-        
+
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+
+    'assets': {
+        'web.assets_backend': [
+            'hospital_management/static/src/js/field_widget.js',
+            'hospital_management/static/src/js/mail_widget.js',
+            'hospital_management/static/src/scss/field_widget.scss',
+            'hospital_management/static/src/scss/mail_widget.scss',
+        ],
+    },
 }

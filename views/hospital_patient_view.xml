@@ -75,6 +75,12 @@
                             <field name="note" />
                             <field name="user_id" />
                         </group>
+                        <group name="name" string="JS Framework">
+                            <field name="color" widget="int_color"/>
+                            <field name="mail" widget="char_mail"/>
+                            
+                        </group>
+
                     </group>
                     <notebook>
                         <page string="Appointments" name="appointment_ids">
