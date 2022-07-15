@@ -9,3 +9,4 @@ class Doctor(models.Model):
 
     name = fields.Char(string='Name', required=True)
     email = fields.Char(string='Email', )
+    patient_ids = fields.Many2many('hospital.patient', 'doctor_patient_rel', string="Patients")

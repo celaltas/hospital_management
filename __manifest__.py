@@ -47,15 +47,22 @@
     ],
 
     'assets': {
-        'web.assets_backend': [
-            'hospital_management/static/src/js/field_widget.js',
-            #'hospital_management/static/src/js/mail_widget.js',
-            'hospital_management/static/src/scss/field_widget.scss',
-            #'hospital_management/static/src/scss/mail_widget.scss',
-        ],
+
         'web.assets_qweb': [
             'hospital_management/static/src/xml/**/*',
         ],
+
+        'web.assets_backend': [
+            'hospital_management/static/src/js/field_widget.js',
+            'hospital_management/static/src/js/catalog_view.js',
+            'hospital_management/static/src/js/catalog_model.js',
+            'hospital_management/static/src/js/catalog_controller.js',
+            'hospital_management/static/src/js/catalog_renderer.js',
+            'hospital_management/static/src/js/mail_widget.js',
+            'hospital_management/static/src/scss/field_widget.scss',
+            # 'hospital_management/static/src/scss/mail_widget.scss',
+        ],
+
     },
 
 

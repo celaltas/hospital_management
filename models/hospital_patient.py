@@ -19,8 +19,7 @@ class Patient(models.Model):
         ('other', 'Other'),
     ], required=True, default='male', tracking=True)
 
-    doctor_id = fields.Many2many(
-        'hospital.doctor', 'doctor_patient_rel', string="Doctors")
+    doctor_ids = fields.Many2many('hospital.doctor', 'doctor_patient_rel', string="Doctors")
 
     # 2.
     # basic alanlar bittikten sonra appointment'a ilgili alanları ekle ve one2many ilişki oluştur
