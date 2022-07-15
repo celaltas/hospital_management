@@ -39,6 +39,7 @@
         'templates/update_page.xml',
         'templates/homepage_override.xml',
 
+
     ],
     # only loaded in demonstration mode
     'demo': [
@@ -48,9 +49,14 @@
     'assets': {
         'web.assets_backend': [
             'hospital_management/static/src/js/field_widget.js',
-            'hospital_management/static/src/js/mail_widget.js',
+            #'hospital_management/static/src/js/mail_widget.js',
             'hospital_management/static/src/scss/field_widget.scss',
-            'hospital_management/static/src/scss/mail_widget.scss',
+            #'hospital_management/static/src/scss/mail_widget.scss',
+        ],
+        'web.assets_qweb': [
+            'hospital_management/static/src/xml/**/*',
         ],
     },
+
+
 }

@@ -3,13 +3,15 @@ odoo.define('my_field_widget', function (require) {
 
     var AbstractField = require('web.AbstractField');
     var fieldRegistry = require('web.field_registry');
+    var core = require('web.core');
+    var qweb = core.qweb;
 
     var colorField = AbstractField.extend({
         className: 'o_int_colorpicker',
         tagName: 'span',
         supportedFieldTypes: ['integer'],
         events: {
-            'mouseover .o_color_pill': 'clickPill', //event space css selector: widget method
+            'click .o_color_pill': 'clickPill', //event space css selector: widget method
 
         },
         init: function () {
@@ -17,18 +19,34 @@ odoo.define('my_field_widget', function (require) {
             this._super.apply(this, arguments);
             //Constructor Method
         },
+        willStart: function () {
+            console.log("willStart called");
+            var self = this;
+            console.log(`self: ${self}`)
+            this.colorGroupData = {};
+            var colorDataDef = this._rpc({
+                model: this.model,
+                method: 'read_group',
+                domain: [],
+                fields: ['color'],
+                groupBy: ['color'],
+            }).then(function (result) {
+                console.log(result)
+                _.each(result, function (r) {
+                    self.colorGroupData[r.color] = r.color_count;
+                });
+            });
+            return $.when(this._super.apply(this, arguments),
+                colorDataDef);
+        },
         _renderEdit: function () {
-            this.$el.empty();  //You can acces element this.$el
-            for (var i = 0; i < this.totalColors; i++) {
-                var className = "o_color_pill o_color_" + i;
-                if (this.value === i) {
-                    className += ' active';
-                }
-                this.$el.append($('<span>', {
-                    'class': className,
-                    'data-val': i,
-                }));
-            }
+            this.$el.empty();
+            var pills = qweb.render('FieldColorPills', {
+                widget: this,
+                message: 'Take red pill!',
+            });
+            this.$el.append(pills);
+            this.$el.find('[data-toggle="tooltip"]').tooltip();
         },
         _renderReadonly: function () {
             var className = "o_color_pill active readonly o_color_" +

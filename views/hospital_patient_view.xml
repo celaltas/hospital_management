@@ -11,6 +11,7 @@
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="responsible_id"/>
+                <field name="color" widget="int_color"/>
             </tree>
         </field>
     </record>
@@ -67,7 +68,7 @@
                             <!-- Sırasıyla  context, domain, options-->
                             <!-- Daha sonra invisible,readonly,required ve enson attrs -->
                             <field name="appointment_count" />
-                            
+
                         </group>
                         <group >
                             <!-- Decorator Başlangıcı-->
@@ -78,7 +79,7 @@
                         <group name="name" string="JS Framework">
                             <field name="color" widget="int_color"/>
                             <field name="mail" widget="char_mail"/>
-                            
+
                         </group>
 
                     </group>
